@@ -2,12 +2,15 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Copy, Check, FileDown } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
+import ShareButtons from "./ShareButtons";
 
 interface ExportSectionProps {
   reportText: string;
+  websiteUrl?: string;
+  overallScore?: number;
 }
 
-const ExportSection = ({ reportText }: ExportSectionProps) => {
+const ExportSection = ({ reportText, websiteUrl, overallScore }: ExportSectionProps) => {
   const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
@@ -61,6 +64,8 @@ const ExportSection = ({ reportText }: ExportSectionProps) => {
       >
         <FileDown className="h-4 w-4" strokeWidth={1.5} /> {t("export.download")}
       </motion.button>
+
+      {websiteUrl && <ShareButtons url={websiteUrl} score={overallScore} />}
     </motion.section>
   );
 };
