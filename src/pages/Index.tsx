@@ -109,6 +109,9 @@ const Index = () => {
   const roastSummary = result
     ? result.roastItems.map((r) => `${r.title}: ${r.problem}`).join("; ")
     : "";
+  const overallScore = result
+    ? Math.round((result.scores.design + result.scores.seo + result.scores.speed + result.scores.conversion) / 4)
+    : 0;
 
   return (
     <div className="min-h-screen bg-background">
@@ -135,17 +138,34 @@ const Index = () => {
           <FixGenerator url={analyzedUrl} roastSummary={roastSummary} />
           <BriefPromptEngine url={analyzedUrl} roastSummary={roastSummary} />
           <QuickWins tips={result.quickWins} />
-          <ExportSection reportText={reportText} />
+          <ExportSection reportText={reportText} websiteUrl={analyzedUrl} overallScore={overallScore} />
           <PaywallSection />
-        </>
-      )}
 
-      {result && (
-        <div className="mx-auto max-w-3xl px-4 py-8">
-          <div className="flex items-center justify-center rounded-xl glass-surface h-24 text-xs text-muted-foreground" style={{ boxShadow: "inset 0 0 0 1px var(--stroke-subtle)" }}>
-            Advertisement Space
-          </div>
-        </div>
+          {/* Engagement CTAs */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="mx-auto max-w-2xl px-4 py-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <motion.button
+              onClick={scrollToInput}
+              whileHover={{ scale: 1.04, boxShadow: "0 0 30px hsla(24, 100%, 50%, 0.5)" }}
+              whileTap={{ scale: 0.97 }}
+              className="flex items-center gap-2 fire-gradient rounded-xl px-8 py-3.5 text-sm font-bold text-primary-foreground heat-pulse"
+            >
+              <Flame className="h-4 w-4" /> 🔥 Roast Another Website
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.04, boxShadow: "0 0 20px hsla(152, 60%, 45%, 0.3)" }}
+              whileTap={{ scale: 0.97 }}
+              className="flex items-center gap-2 rounded-xl glass-surface px-8 py-3.5 text-sm font-semibold text-foreground transition-all"
+              style={{ boxShadow: "inset 0 0 0 1px hsla(152, 60%, 45%, 0.3)" }}
+            >
+              <Rocket className="h-4 w-4 text-success" /> 🚀 Want us to fix your website?
+            </motion.button>
+          </motion.section>
+        </>
       )}
 
       <FooterSection />
