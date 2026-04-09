@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const ADSTERRA_SCRIPT_URL = "//pl25713112.profitablegatecpm.com/a1/6e/44/a16e44b03b34bb09f319f45f1e2bb88b.js";
+const ADSTERRA_SCRIPT_URL = "https://pl29106259.profitablecpmratenetwork.com/8d/02/b8/8d02b8cbd28898c543dffbe7e601bda9.js";
 
 /**
  * Loads Adsterra Social Bar script once, triggered by user interaction.
