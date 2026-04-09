@@ -10,11 +10,11 @@ const FooterSection = () => {
         {t("footer.tagline")}
       </p>
       <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
-        <a href="#" className="hover:text-flame-orange transition-colors">Privacy Policy</a>
+        <Link to="/privacy" className="hover:text-flame-orange transition-colors">Privacy Policy</Link>
         <span className="text-border">·</span>
-        <a href="#" className="hover:text-flame-orange transition-colors">Terms</a>
+        <Link to="/contact" className="hover:text-flame-orange transition-colors">Contact</Link>
         <span className="text-border">·</span>
-        <Link to="/about" className="hover:text-flame-orange transition-colors">👤 Who Made This?</Link>
+        <Link to="/about" className="hover:text-flame-orange transition-colors">👤 About</Link>
       </div>
     </footer>
   );
