@@ -1,4 +1,6 @@
 import { useState, useRef, useCallback } from "react";
+import { motion } from "framer-motion";
+import { Flame, Rocket } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import URLInputSection from "@/components/URLInputSection";
 import type { Industry } from "@/components/URLInputSection";
@@ -18,10 +20,12 @@ import { generateReportText, getScanMessages, type RoastResult } from "@/lib/moc
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/lib/i18n";
 import { toast } from "sonner";
+import { useAdsterra } from "@/hooks/useAdsterra";
 
 const Index = () => {
   const { language } = useLanguage();
   const [isLoading, setIsLoading] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const [scanLogs, setScanLogs] = useState<string[]>([]);
   const [result, setResult] = useState<RoastResult | null>(null);
   const [analyzedUrl, setAnalyzedUrl] = useState("");
@@ -29,12 +33,16 @@ const Index = () => {
   const [competitorUrl, setCompetitorUrl] = useState("");
   const inputRef = useRef<HTMLDivElement>(null);
 
+  // Load Adsterra Social Bar only after user interacts (clicks roast)
+  useAdsterra(hasInteracted);
+
   const scrollToInput = useCallback(() => {
     inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   }, []);
 
   const handleSubmit = useCallback(async (url: string, industry: Industry, compUrl?: string) => {
     setIsLoading(true);
+    setHasInteracted(true);
     setResult(null);
     setCompetitorResult(null);
     setScanLogs([]);

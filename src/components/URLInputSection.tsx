@@ -149,11 +149,21 @@ const URLInputSection = forwardRef<HTMLDivElement, URLInputSectionProps>(
             )}
           </AnimatePresence>
 
-          {/* Helper text */}
+          {/* Helper text + Demo button */}
           {!hasError && (
-            <div className="flex items-center gap-1.5 pl-2">
-              <LinkIcon className="h-3 w-3 text-muted-foreground/50" />
-              <p className="text-[11px] text-muted-foreground/60">Example: https://yourwebsite.com</p>
+            <div className="flex items-center justify-between pl-2 pr-1">
+              <div className="flex items-center gap-1.5">
+                <LinkIcon className="h-3 w-3 text-muted-foreground/50" />
+                <p className="text-[11px] text-muted-foreground/60">Example: https://yourwebsite.com</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => { setUrl("https://apple.com"); setTouched(true); }}
+                disabled={isLoading}
+                className="text-[11px] font-medium text-flame-orange/70 hover:text-flame-orange transition-colors"
+              >
+                Try demo →
+              </button>
             </div>
           )}
 
