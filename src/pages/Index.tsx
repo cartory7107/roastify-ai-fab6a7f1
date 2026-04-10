@@ -1,5 +1,7 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+
+const AdNativeBanner = lazy(() => import("@/components/AdNativeBanner"));
 import { Flame, Rocket } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import URLInputSection from "@/components/URLInputSection";
