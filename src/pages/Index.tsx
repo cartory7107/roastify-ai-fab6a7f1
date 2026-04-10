@@ -130,6 +130,9 @@ const Index = () => {
           <ScoreDashboard scores={result.scores} />
           <RoastReport items={result.roastItems} />
 
+          {/* Native Banner — after roast output */}
+          <Suspense fallback={null}><AdNativeBanner /></Suspense>
+
           <TopCompetitors url={analyzedUrl} roastSummary={roastSummary} industry={undefined} userScores={result.scores} />
 
           {competitorResult && competitorUrl && (
@@ -172,6 +175,9 @@ const Index = () => {
           </motion.section>
         </>
       )}
+
+      {/* Native Banner — above footer */}
+      <Suspense fallback={null}><AdNativeBanner /></Suspense>
 
       <FooterSection />
 
