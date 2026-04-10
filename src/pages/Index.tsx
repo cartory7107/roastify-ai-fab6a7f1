@@ -120,6 +120,9 @@ const Index = () => {
       <HeroSection onScrollToInput={scrollToInput} />
       <URLInputSection ref={inputRef} onSubmit={handleSubmit} isLoading={isLoading} scanLogs={scanLogs} />
 
+      {/* Native Banner — below hero/input */}
+      <Suspense fallback={null}><AdNativeBanner /></Suspense>
+
       {!result && <FeatureShowcase onScrollToInput={scrollToInput} />}
 
       {result && (
