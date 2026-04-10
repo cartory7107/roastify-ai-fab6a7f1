@@ -1,5 +1,7 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+
+const AdNativeBanner = lazy(() => import("@/components/AdNativeBanner"));
 import { Flame, Rocket } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import URLInputSection from "@/components/URLInputSection";
@@ -118,12 +120,18 @@ const Index = () => {
       <HeroSection onScrollToInput={scrollToInput} />
       <URLInputSection ref={inputRef} onSubmit={handleSubmit} isLoading={isLoading} scanLogs={scanLogs} />
 
+      {/* Native Banner — below hero/input */}
+      <Suspense fallback={null}><AdNativeBanner /></Suspense>
+
       {!result && <FeatureShowcase onScrollToInput={scrollToInput} />}
 
       {result && (
         <>
           <ScoreDashboard scores={result.scores} />
           <RoastReport items={result.roastItems} />
+
+          {/* Native Banner — after roast output */}
+          <Suspense fallback={null}><AdNativeBanner /></Suspense>
 
           <TopCompetitors url={analyzedUrl} roastSummary={roastSummary} industry={undefined} userScores={result.scores} />
 
@@ -167,6 +175,9 @@ const Index = () => {
           </motion.section>
         </>
       )}
+
+      {/* Native Banner — above footer */}
+      <Suspense fallback={null}><AdNativeBanner /></Suspense>
 
       <FooterSection />
 
