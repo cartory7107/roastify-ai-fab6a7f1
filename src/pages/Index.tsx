@@ -120,8 +120,8 @@ const Index = () => {
       <HeroSection onScrollToInput={scrollToInput} />
       <URLInputSection ref={inputRef} onSubmit={handleSubmit} isLoading={isLoading} scanLogs={scanLogs} />
 
-      {/* Native Banner — below hero/input */}
-      <Suspense fallback={null}><AdNativeBanner /></Suspense>
+      {/* Native Banner — below hero/input (Placement: hero) */}
+      <Suspense fallback={null}><AdNativeBanner placement="hero" /></Suspense>
 
       {!result && <FeatureShowcase onScrollToInput={scrollToInput} />}
 
@@ -130,8 +130,8 @@ const Index = () => {
           <ScoreDashboard scores={result.scores} />
           <RoastReport items={result.roastItems} />
 
-          {/* Native Banner — after roast output */}
-          <Suspense fallback={null}><AdNativeBanner /></Suspense>
+          {/* Native Banner — after roast output (Placement: results) */}
+          <Suspense fallback={null}><AdNativeBanner placement="results" /></Suspense>
 
           <TopCompetitors url={analyzedUrl} roastSummary={roastSummary} industry={undefined} userScores={result.scores} />
 
@@ -176,8 +176,8 @@ const Index = () => {
         </>
       )}
 
-      {/* Native Banner — above footer */}
-      <Suspense fallback={null}><AdNativeBanner /></Suspense>
+      {/* Native Banner — above footer (Placement: footer) */}
+      <Suspense fallback={null}><AdNativeBanner placement="footer" /></Suspense>
 
       <FooterSection />
 
