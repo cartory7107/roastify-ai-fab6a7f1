@@ -159,4 +159,67 @@
     backdrop-filter: blur(12px);
     background: linear-gradient(to bottom, transparent, hsl(var(--background)));
   }
+
+  /* ============================================
+     ADSTERRA NATIVE BANNER STYLES
+     Optimized for revenue + UX
+     ============================================ */
+
+  /* Container wrapper - prevents layout shift */
+  .adsterra-native-banner-wrapper {
+    contain: layout paint style;
+    content-visibility: auto;
+  }
+
+  /* Ad content container */
+  .adsterra-native-ad-content {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ensure ad iframe is responsive */
+  .adsterra-native-ad-content iframe,
+  .adsterra-native-ad-content > div {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    border: none !important;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .adsterra-native-ad-content {
+      min-height: 80px;
+    }
+  }
+
+  /* Smooth fade-in animation for ads */
+  @keyframes adFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .adsterra-native-ad-content[data-loaded="true"] {
+    animation: adFadeIn 0.4s ease-out;
+  }
+
+  /* Prevent ad from breaking layout on small screens */
+  @media (max-width: 480px) {
+    .adsterra-native-banner-wrapper {
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
 }
+
