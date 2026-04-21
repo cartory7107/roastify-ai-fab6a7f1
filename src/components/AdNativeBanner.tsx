@@ -76,13 +76,13 @@ const AdNativeBanner = ({
       if (win.adsterra && typeof win.adsterra.refresh === "function") {
         try {
           win.adsterra.refresh(container);
-        } catch (e) {
+        } catch {
           // Silent fail - ad will render on next cycle
         }
       }
     };
 
-    // Try immediately and after a delay (script might still be loading)
+    // Try immediately and after a delay
     tryRefreshAd();
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -98,7 +98,7 @@ const AdNativeBanner = ({
     };
   }, [isVisible, placement]);
 
-  // Placement-specific margin adjustments
+  // Placement-specific styling
   const placementClasses = {
     hero: "my-6 md:my-8",
     results: "my-8 md:my-12",
