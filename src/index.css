@@ -159,4 +159,39 @@
     backdrop-filter: blur(12px);
     background: linear-gradient(to bottom, transparent, hsl(var(--background)));
   }
+
+  /* Adsterra Native Banner Styles */
+  .adsterra-native-banner-container {
+    contain: layout paint style;
+    content-visibility: auto;
+  }
+
+  .adsterra-native-ad {
+    width: 100%;
+    min-height: 120px;
+  }
+
+  /* Prevent layout shift during ad load */
+  .adsterra-native-ad iframe,
+  .adsterra-native-ad > div {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Smooth fade-in animation for ads */
+  @keyframes adFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .adsterra-native-ad[data-loaded="true"] {
+    animation: adFadeIn 0.4s ease-out;
+  }
 }
+
