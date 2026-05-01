@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Flame, User } from "lucide-react";
+import { Flame, User, Download } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -24,6 +24,14 @@ const HeroSection = ({ onScrollToInput }: HeroSectionProps) => {
           </div>
         </div>
         <div className="flex items-center gap-2">
+          <Link
+            to="/install"
+            className="group relative flex items-center gap-1.5 rounded-lg fire-gradient px-3 py-1.5 text-xs font-bold text-white shadow-[0_0_20px_hsla(24,100%,50%,0.4)] hover:shadow-[0_0_30px_hsla(24,100%,50%,0.7)] transition-all heat-pulse"
+          >
+            <Download className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Install App</span>
+            <span className="sm:hidden">📲</span>
+          </Link>
           <Link to="/about" className="flex items-center gap-1.5 rounded-lg border border-border/60 bg-secondary/50 px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:border-flame-orange/30 transition-all">
             <User className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">Who Made This?</span>
