@@ -40,7 +40,7 @@ const SCREENSHOTS = [
 const TRUST_BADGES = [
   { icon: Shield, label: "Secure", sub: "HTTPS verified" },
   { icon: Zap, label: "Fast", sub: "<3s install" },
-  { icon: BadgeCheck, label: "No Ads*", sub: "in-app clean" },
+  { icon: BadgeCheck, label: "Verified", sub: "Trusted app" },
 ];
 
 type InstallState = "idle" | "preparing" | "downloading" | "installing" | "done" | "unavailable";
@@ -422,7 +422,7 @@ const Install = () => {
             </div>
             <div className="flex-1 min-w-0">
               <p className="truncate text-sm font-bold">Roastify AI</p>
-              <p className="truncate text-[11px] text-muted-foreground">Free · 12 MB · No ads in app</p>
+              <p className="truncate text-[11px] text-muted-foreground">Free · 12 MB · Productivity</p>
             </div>
             <motion.button
               onClick={handleInstall}
