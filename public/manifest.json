@@ -1,0 +1,26 @@
+{
+  "name": "Roastify AI – Brutal Website Roasts",
+  "short_name": "Roastify",
+  "description": "Get brutally honest AI feedback on your website's design, SEO, speed, and conversion. Free instant analysis.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0b0b",
+  "theme_color": "#ff6a00",
+  "categories": ["productivity", "utilities", "business"],
+  "icons": [
+    {
+      "src": "/roastify-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/roastify-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
